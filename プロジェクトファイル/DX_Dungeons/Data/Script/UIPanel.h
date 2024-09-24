@@ -41,12 +41,9 @@ public:
 	void SetIsAppNum(int number, bool isApp);
 	void SetAllIsApp(bool isApp);
 
-	void SetNumberUI(int number, ExtendPos pos, bool isApp, int alpha);
 private:
 	std::vector<UI> m_UI;
 	std::vector<numberUI> m_numberUI;
 	int m_lastAlpha;
-
-	int m_numberHandle;
 };
 

@@ -31,6 +31,7 @@ GameScene::GameScene()
 	m_textAlpha = 0;
 	m_textAlphaFrag = false;
 	m_hitStopCount = 0;
+	m_whiteAlpha = 0;
 }
 
 GameScene::~GameScene()
@@ -220,12 +221,6 @@ void GameScene::Update()
 	}
 
 	m_pLight->Update(m_pCamera->GetPos(), m_pPlayer->GetPos());
-
-	SetShadowMapLightDirection(shadowHandle, VSub(m_pPlayer->GetPos(), m_pCamera->GetPos()));
-	auto tempPos = m_pPlayer->GetPos();
-	SetShadowMapDrawArea(shadowHandle,
-		VGet(tempPos.x - 1000, tempPos.y - 100, tempPos.z - 1000),
-		VGet(tempPos.x + 1000, tempPos.y + 500, tempPos.z + 1000));
 }
 
 void GameScene::Draw() const
@@ -330,12 +325,6 @@ void GameScene::EndingInit()
 	m_UIManager.SetUIPanel(m_endUI, "Game_end");
 	// 獲得アイテム個数の確定
 	CalculateReward();
-	m_endUI.SetNumberUI(m_gettingPoint,
-		{ Game::kScreenWidth * 0.6f,
-		Game::kScreenWidth * 0.7f,
-		Game::kScreenHeight * 0.6f,
-		Game::kScreenHeight * 0.8f },
-		false, 255);
 
 	if (m_pBoss->GetHP() <= 0)
 	{

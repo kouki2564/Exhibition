@@ -6,6 +6,12 @@
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+	// アイコン変更
+	SetWindowIconID(111);
+
+	// システムバータイトル
+	SetWindowTextA("Ordeal Maze");
+
 	// ウインドウモード設定
 	ChangeWindowMode(true);
 

@@ -47,7 +47,5 @@ private:
 	bool m_textAlphaFrag;
 
 	int m_hitStopCount;
-
-	int shadowHandle;
 };
 

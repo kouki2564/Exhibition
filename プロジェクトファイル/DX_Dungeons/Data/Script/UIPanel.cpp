@@ -3,13 +3,10 @@
 
 UIPanel::UIPanel()
 {
-	m_numberHandle = LoadGraph("Data/Graph/number.png");
-	assert(m_numberHandle != -1);
 }
 
 UIPanel::~UIPanel()
 {
-	DeleteGraph(m_numberHandle);
 }
 
 void UIPanel::Draw()
@@ -47,21 +44,6 @@ void UIPanel::Draw()
 				}
 			}
 
-			// Œ…”•ª‚Ì•‚ðŠm•Û
-			auto range = (i.pos.endX - i.pos.startX) / keta;
-
-			SetDrawBlendMode(DX_BLENDMODE_ALPHA, i.alpha);
-			for (int k = keta; k > 0; k--)
-			{
-				if (k == -1)
-				{
-					break;
-				}
-				auto startX = i.pos.startX + ((keta - k) * range);
-				auto endX = i.pos.startX + ((keta - k + 1) * range);
-
-				DrawRectExtendGraphF(startX, i.pos.startY, endX, i.pos.endY,num[k-1] * 100, 0, 1000, 1000, m_numberHandle, true);
-			}
 			SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255);
 		}
 	}
@@ -131,15 +113,4 @@ void UIPanel::SetAllIsApp(bool isApp)
 	{
 		i.isApp = isApp;
 	}
-}
-
-void UIPanel::SetNumberUI(int number, ExtendPos pos, bool isApp, int alpha)
-{
-	numberUI temp;
-	temp.number = number;
-	temp.pos = pos;
-	temp.isApp = isApp;
-	temp.alpha = alpha;
-
-	m_numberUI.push_back(temp);
 }
